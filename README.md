@@ -1,73 +1,146 @@
-# React + TypeScript + Vite
+# File Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A VS Code–inspired file explorer with recursive folder structures, inline editing, persistent local state, and custom tree rendering.
 
-Currently, two official plugins are available:
+Built using:
+- React
+- TypeScript
+- Vite
+- Lucide React Icons
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The application supports nested folders and files with recursive rendering and local persistence using `localStorage`.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Project Structure
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```txt
+src/
+├── components/
+│   ├── EditorPanel.tsx
+│   ├── FileTree.tsx
+│   ├── Toolbar.tsx
+│   └── TreeNode.tsx
+│
+├── types/
+│   └── tree.ts
+│
+├── utils/
+│   └── treeHelpers.ts
+│
+├── App.tsx
+├── main.tsx
+└── styles.css
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+# Features
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Feature | Description |
+|---|---|
+| Create File | Create files from toolbar or inside folders |
+| Create Folder | Create folders from toolbar or inside folders |
+| Nested Structure | Unlimited recursive folder nesting |
+| Edit File Content | Edit selected files in editor panel |
+| Rename Files/Folders | Rename directly inside the tree |
+| Delete Files/Folders | Delete nodes from the explorer |
+| Expand / Collapse | Folder toggle support |
+| Persistent State | Tree stored in browser localStorage |
+| VS Code-style UI | Dark themed sidebar and editor layout |
+
+---
+
+# Constraints Followed
+
+The following ready-made tree libraries were intentionally NOT used:
+
+- react-arborist
+- rc-tree
+- react-complex-tree
+
+The tree structure is implemented manually using recursive React components and utility functions.
+
+---
+
+# Tech Stack
+
+- React
+- TypeScript
+- Vite
+- Lucide React
+
+---
+
+# Getting Started
+
+## Install dependencies
+
+```bash
+npm install
 ```
+
+## Start development server
+
+```bash
+npm run dev
+```
+
+Open:
+
+```txt
+http://localhost:5173
+```
+
+---
+
+# Build
+
+```bash
+npm run build
+```
+
+---
+
+# Architecture
+
+The application uses recursive tree rendering for nested folders and files.
+
+Core tree operations:
+- addNode
+- deleteNode
+- renameNode
+- updateFileContent
+
+State management is handled using React state.
+
+The entire tree structure is persisted in browser `localStorage`.
+
+---
+
+# UI Notes
+
+The UI is inspired by the VS Code explorer layout:
+- dark theme
+- sidebar tree structure
+- recursive nested folders
+- hover interactions
+- collapsible folders
+- editor panel
+
+---
+
+# Assumptions
+
+- Duplicate file/folder names are allowed.
+- File contents are stored locally in browser storage.
+- No backend/database is used.
+- Data persistence is browser-specific.
+
+---
+
+# AI Assistance
+
+LLMs were used during development as permitted in the assignment instructions.
+
+Detailed AI-assisted development history is available in the submitted `chat-history.md` file.
