@@ -1,94 +1,99 @@
-# AI-Assisted Development History
+# Chat History
 
-LLMs were used during development as permitted in the assignment instructions.
+## Session 1 — Project Setup
 
-The application architecture, recursive tree structure, component breakdown, and implementation decisions were developed iteratively with AI assistance.
+### Prompt
+What's the suggested architecture for this assignment file explorer?
+
+### Response
+Recommended stack:
+- React
+- TypeScript
+- Vite
+
+Suggested architecture:
+- Toolbar
+- FileTree
+- TreeNode
+- EditorPanel
+
+Initial setup included:
+- recursive component rendering
+- local state management
+- utility helper functions for tree operations
 
 ---
 
-# Session 1 — Initial Project Setup
+## Session 2 — Recursive Tree Structure
 
-Topics:
-- React + TypeScript + Vite setup
-- Folder structure planning
-- Recursive tree data model
-- Component architecture
+### Prompt
+How should I structure nested folders and files?
 
-Key outputs:
-- `TreeNodeType` interface
-- Recursive tree rendering strategy
-- Initial component structure
+### Response
+Used a recursive tree node structure:
+
+```ts
+interface TreeNodeType {
+  id: string;
+  name: string;
+  type: "file" | "folder";
+  content?: string;
+  children?: TreeNodeType[];
+}
+```
+
+Folders contain nested `children`, allowing recursive rendering through the `TreeNode` component.
 
 ---
 
-# Session 2 — Tree Operations
+## Session 3 — Tree Operations
 
-Topics:
-- Recursive add/delete/update functions
-- Nested folder handling
-- File editing logic
-- State persistence using localStorage
+### Prompt
+How do I recursively add and delete nodes?
 
-Key outputs:
+### Response
+Implemented recursive helper functions:
 - `addNode`
 - `deleteNode`
 - `renameNode`
 - `updateFileContent`
 
----
-
-# Session 3 — UI Improvements
-
-Topics:
-- VS Code-inspired explorer layout
-- Dark theme styling
-- Sidebar/editor structure
-- Hover interactions
-- Expand/collapse behavior
-
-Key outputs:
-- Improved `styles.css`
-- Explorer layout refinement
-- Better spacing and hierarchy
+These functions traverse nested folders and update the tree immutably.
 
 ---
 
-# Session 4 — Feature Enhancements
+## Session 4 — UI Improvements
 
-Topics:
-- Nested file/folder creation
-- Rename functionality
-- Inline actions
-- Persistent state handling
+### Prompt
+Improve the UI to look closer to VS Code.
 
-Key outputs:
-- Recursive nested structure support
-- Cleaner tree interactions
-- Improved usability
+### Response
+Added:
+- dark theme styling
+- sidebar/editor layout
+- hover interactions
+- collapsible folders
+- improved spacing and hierarchy
+- file/folder icons using Lucide React
 
----
-
-# Session 5 — Documentation
-
-Topics:
-- README structure
-- Project explanation
-- Architecture notes
-- Constraint compliance
-
-Key outputs:
-- Final README
-- Documentation cleanup
+UI styling was moved from inline styles into a dedicated CSS file.
 
 ---
 
-# Notes
+## Session 5 — Documentation
 
-AI assistance was used as a development aid for:
-- architecture guidance
-- debugging
-- UI refinement
-- recursive logic design
-- documentation
+### Prompt
+Help improve README and project documentation.
 
-Final integration, testing, debugging, and project assembly were completed manually.
+### Response
+Improved:
+- architecture explanation
+- setup instructions
+- project structure
+- assignment constraint compliance
+- AI usage transparency
+
+Added:
+- README.md
+- chat-history.md
+- deployment instructions
